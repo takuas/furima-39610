@@ -55,11 +55,11 @@
 | column             | type       | options                        |
 | ------------------ | ---------- | ------------------------------ |
 | postal             | string     | null: false                    |
-| prefectures        | string     | null: false                    |
+| ship_from_id       | integer    | null: false                    |
 | municipalities     | string     | null: false                    |
 | address            | string     | null: false                    |
 | building           | string     |                                |
-| tel                | varchar    | null: false                    |
+| tel                | string     | null: false                    |
 | order              | references | null: false, foreign_key: true |
 
 ### Association
