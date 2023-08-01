@@ -19,9 +19,9 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-  belongs_to :days_to_ship
-  belongs_to :delivery_charge
-  belongs_to :ship_from
+  belongs_to :days_to_ship, class_name: 'DaysToShip'
+  belongs_to :delivery_charge, class_name: 'DeliveryCharge'
+  belongs_to :ship_from, class_name: 'ShipFrom'
   belongs_to :status
 
 end
