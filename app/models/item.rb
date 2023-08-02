@@ -9,7 +9,7 @@ class Item < ApplicationRecord
     validates :description
     validates :user
     validates :image
-    validates :price, inclusion: 300..9_999_999, format: { with: VALID_PRICE_REGEX }
+    validates :price,              numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
     validates :category_id,        numericality: { other_than: 1 , message: "can't be blank" }
     validates :status_id,          numericality: { other_than: 1 , message: "can't be blank" }
     validates :delivery_charge_id, numericality: { other_than: 1 , message: "can't be blank" }
