@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many   :items
+  has_many :items
 
   VALID_PASSWORD_REGEX  = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/
   VALID_NAME_REGEX      = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/
@@ -19,6 +19,5 @@ class User < ApplicationRecord
     validates :kana_first_name, format: { with: VALID_KANA_NAME_REGEX }
   end
 
-  validates :password,          format: { with: VALID_PASSWORD_REGEX }
-  
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
 end
