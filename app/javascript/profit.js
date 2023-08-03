@@ -7,7 +7,7 @@ function profit (){
     return;
   }
 
-  addEventListener('input', () => {
+  priceInput.addEventListener('input', () => {
     const price = parseInt(priceInput.value)
     if (!isNaN(price)){
       const commission = Math.floor(price * 0.1)
@@ -15,11 +15,12 @@ function profit (){
       resultCommission.innerText = commission.toLocaleString()
       resultProfit.innerText = profit.toLocaleString()
     } else {
-      resultCommission.innerText = ''
-      resultProfit.innerText = ''  
+      resultCommission.innerText = '0'
+      resultProfit.innerText = '0'  
     }
   })
 
 }
 
-window.addEventListener(`turbo:load`, profit )
+ window.addEventListener(`turbo:load`, profit )
+ window.addEventListener(`keyup`, profit )
