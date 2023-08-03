@@ -127,11 +127,6 @@
       新規投稿商品
     </div>
     <ul class='item-lists'>
-
-      <% if @items.length != 0 %>
-        <%= item_lists(@items) %>
-      <% end %>
-
       <% if @items.length == 0 %>
         <li class='list'>
           <%= link_to '#' do %>
@@ -150,6 +145,8 @@
           </div>
           <% end %>
         </li>
+      <% else %>
+        <%= item_lists(@items) %>
       <% end %>
     </ul>
   </div>
