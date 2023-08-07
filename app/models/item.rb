@@ -19,6 +19,10 @@ class Item < ApplicationRecord
     validates :days_to_ship_id,    numericality: { other_than: 1, message: "can't be blank" }
   end
 
+  def sold?
+    order.present?
+  end
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :days_to_ship, class_name: 'DaysToShip'
