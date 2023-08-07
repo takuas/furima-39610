@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, :index
+  before_action :authenticate_user!, only: [:index]
   before_action :set_item, only: [:index, :create]
 
 
@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
 
   def create
     @order_sending_address = OrderSendingAddress.new(order_sending_address_params)
-    binding.pry
     if @order_sending_address.valid?
       @order_sending_address.save
       redirect_to root_path
