@@ -8,7 +8,6 @@ class OrderSendingAddress
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :order_id
     validates :postal, format: { with: VALID_POSTAL_REGEX }
     validates :ship_from_id
     validates :municipalities
