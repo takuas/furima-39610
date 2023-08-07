@@ -3,8 +3,6 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  VALID_PRICE_REGEX = /\A\d+\Z/
-
   with_options presence: true do
     validates :item_name
     validates :description
