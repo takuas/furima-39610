@@ -1,6 +1,6 @@
 class OrderSendingAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :order_id, :postal, :ship_from_id, :municipalities, :address, :building, :tel
+  attr_accessor :user_id, :item_id, :order_id, :postal, :ship_from_id, :municipalities, :address, :building, :tel, :token
 
   VALID_POSTAL_REGEX = /\A\d{3}-\d{4}\z/
   VALID_TEL_REGEX = /\A\d{10,11}\z/
