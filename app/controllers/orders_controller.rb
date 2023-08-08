@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
 
 
   def index
+    gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     redirect_to root_path if current_user.id == @item.user.id || @item.sold?
     @order_sending_address = OrderSendingAddress.new
   end
@@ -25,6 +26,6 @@ class OrdersController < ApplicationController
   end
 
   def order_sending_address_params
-    params.require(:order_sending_address).permit(:postal, :ship_from_id, :municipalities, :address, :tel, :building).merge(user_id: current_user.id, item_id: @item.id)
+    params.require(:order_sending_address).permit(:postal, :ship_from_id, :municipalities, :address, :tel, :building).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
   end
 end
