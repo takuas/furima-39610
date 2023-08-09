@@ -12,8 +12,8 @@ class OrdersController < ApplicationController
   def create
     @order_sending_address = OrderSendingAddress.new(order_sending_address_params)
     if @order_sending_address.valid?
-      @order_sending_address.save
-      redirect_to root_path
+      pay_item
+      redirect_to root_path if @order_sending_address.save
     else
       render :index, status: :unprocessable_entity
     end
@@ -27,5 +27,14 @@ class OrdersController < ApplicationController
 
   def order_sending_address_params
     params.require(:order_sending_address).permit(:postal, :ship_from_id, :municipalities, :address, :tel, :building).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: @order_sending_address.token,
+      currency: 'jpy'
+    )
   end
 end
