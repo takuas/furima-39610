@@ -13,11 +13,22 @@ class OrderSendingAddress
     validates :ship_from_id,  numericality: { other_than: 1, message: "can't be blank" }
     validates :municipalities
     validates :address
-    validates :tel,           format: { with: VALID_TEL_REGEX }
+    validates :tel, format: { with: VALID_TEL_REGEX }
   end
 
   def save
-    order = Order.create(user_id: user_id, item_id: item_id)
-    SendingAddress.create(postal: postal, ship_from_id: ship_from_id, municipalities: municipalities, address: address, building: building, tel: tel, order_id: order.id)
+    order = Order.create(
+      user_id,
+      item_id
+    )
+    SendingAddress.create(
+      postal,
+      ship_from_id,
+      municipalities,
+      address,
+      building,
+      tel,
+      order_id: order.id
+    )
   end
 end
