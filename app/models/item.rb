@@ -1,8 +1,7 @@
 class Item < ApplicationRecord
+  has_one :order
   belongs_to :user
   has_one_attached :image
-
-  VALID_PRICE_REGEX = /\A\d+\Z/
 
   with_options presence: true do
     validates :item_name
@@ -18,6 +17,10 @@ class Item < ApplicationRecord
     validates :delivery_charge_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :ship_from_id,       numericality: { other_than: 1, message: "can't be blank" }
     validates :days_to_ship_id,    numericality: { other_than: 1, message: "can't be blank" }
+  end
+
+  def sold?
+    order.present?
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
