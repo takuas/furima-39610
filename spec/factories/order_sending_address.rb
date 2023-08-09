@@ -6,5 +6,6 @@ FactoryBot.define do
     address        { Faker::Address.secondary_address }
     tel            { Faker::Number.unique.number(digits: 11) }
     building       { Faker::Address.building_number }
+    token          { Faker::Alphanumeric.alphanumeric(number: 16) }
   end
 end
