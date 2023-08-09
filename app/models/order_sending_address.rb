@@ -18,16 +18,16 @@ class OrderSendingAddress
 
   def save
     order = Order.create(
-      user_id,
-      item_id
+      user_id: user_id,
+      item_id: item_id
     )
     SendingAddress.create(
-      postal,
-      ship_from_id,
-      municipalities,
-      address,
-      building,
-      tel,
+      postal: postal,
+      ship_from_id: ship_from_id,
+      municipalities: municipalities,
+      address: address,
+      building: building,
+      tel: tel,
       order_id: order.id
     )
   end
