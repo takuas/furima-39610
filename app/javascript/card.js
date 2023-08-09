@@ -28,4 +28,10 @@ const pay = () => {
   })
 }
 
-window.addEventListener("turbo:load", pay)
+const credit = document.getElementById('item_id')
+if (credit) {
+  const itemId = credit.getAttribute('data-item-id');
+  if (window.location.pathname === `/items/${itemId}/orders`) {
+    window.addEventListener("turbo:load", pay);
+  }
+}

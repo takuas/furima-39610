@@ -36,7 +36,7 @@
       <%= render 'shared/error_messages', model: f.object %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
-      <h1 class='info-input-haedline'>
+      <h1 class='info-input-haedline' id='item_id' data-item-id=<%= @item.id%> >
         クレジットカード情報入力
       </h1>
       <div class="form-group">
