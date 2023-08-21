@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
+    @q = Item.ransack(params[:q])
   end
 
   def new
@@ -37,6 +38,17 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy if user_signed_in? && current_user.id == @item.user.id
     redirect_to root_path
+  end
+
+  def search
+    @q = Item.ransack(params[:q])
+    @items = @q.result.order('created_at DESC')
+    render :search
+    #respond_to do |format|
+      #format.html { render :index } # 通常の HTML レスポンス
+      #format.js   
+      #format.json { render json: { html: render_to_string(partial: 'items_list', locals: { items: @items }) } }
+    #end
   end
 
   private
