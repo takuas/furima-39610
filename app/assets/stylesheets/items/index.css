@@ -308,4 +308,25 @@ a {
   font-size: 2vh;
 }
 
+.item-search-form {
+  display: flex;
+}
+
+.item-select-box {
+  border-right: none;
+  color: #3ccace;
+  text-align: center;
+  padding-left: 20px;
+  border-radius: 10px 0 0 10px;
+  background-color: #f5f5f5;
+}
+
+.item-search-button {
+  width: 5vh;
+  border: none;
+  cursor: pointer;
+  background-color: #3ccace;
+  padding: 8px;
+  border-radius: 0 10px 10px 0;
+}
 /* //商品一覧 */
