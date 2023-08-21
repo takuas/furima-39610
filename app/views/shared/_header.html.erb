@@ -12,7 +12,8 @@
   <div class='nav'>
     <ul class='lists-left'>
       <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
-      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+      <li><%= link_to 'ブランド', "#", class: "category-list" %></li><%# 元のクラス名はbrand-list %>
+      <li><a href="#section" class="brand-list">商品一覧</a></li>
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
