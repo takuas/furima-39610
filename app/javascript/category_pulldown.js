@@ -1,66 +1,57 @@
-function pulldown (){
+function styleChange(element, styleName, value) {
+  if (value) {
+    element.style[styleName] = value
+  } else {
+    element.style[styleName] = ""
+  }
+}
+
+function changeBackground(link, color) {
+  styleChange(link, "background", color)
+}
+
+function changeTextColor(link, color) {
+  styleChange(link, "color", color)
+}
+
+function pulldown() {
   const menuPulldown = document.getElementById("category-list")
   const pulldownLists = document.getElementById("category-pull-down")
   const category = document.getElementById("category-link-mouseleave")
-  const categoryLinks = [
-    document.getElementById("category-link1"),
-    document.getElementById("category-link2"),
-    document.getElementById("category-link3"),
-    document.getElementById("category-link4"),
-    document.getElementById("category-link5"),
-    document.getElementById("category-link6"),
-    document.getElementById("category-link7"),
-    document.getElementById("category-link8"),
-    document.getElementById("category-link9"),
-    document.getElementById("category-link10")
-  ]
+  
+  const categoryLinks = []
+  const categoryClassLinks = []
 
-  const categoryClassLinks = [
-    document.querySelector(".category-link1"),
-    document.querySelector(".category-link2"),
-    document.querySelector(".category-link3"),
-    document.querySelector(".category-link4"),
-    document.querySelector(".category-link5"),
-    document.querySelector(".category-link6"),
-    document.querySelector(".category-link7"),
-    document.querySelector(".category-link8"),
-    document.querySelector(".category-link9"),
-    document.querySelector(".category-link10"),
-  ]
+  for (let i = 1; i <= 10; i++) {
+    categoryLinks.push(document.getElementById(`category-link${i}`))
+    categoryClassLinks.push(document.querySelector(`.category-link${i}`))
+  }
 
-  menuPulldown.addEventListener('click',() => {
-    if (pulldownLists.getAttribute("style") == "display:block;"){
-      pulldownLists.removeAttribute("style")
-    } else {
-      pulldownLists.setAttribute("style", "display:block;")
+  if (menuPulldown) {
+    menuPulldown.addEventListener('click', () => {
+      styleChange(pulldownLists, "display", pulldownLists.style.display === "block" ? "" : "block")
+    })
+  }
+
+  categoryLinks.forEach((link) => {
+    if (link) {
+      link.addEventListener('mouseover', () => changeBackground(link, "#3ccace"))
+      link.addEventListener('mouseout', () => changeBackground(link, ""))
     }
   })
 
-  categoryLinks.forEach((link) => {
-    link.addEventListener('mouseover', () => {
-      link.style.background = "#3ccace"
-    })
-
-    link.addEventListener('mouseout', () => {
-      link.style.background = ""; // 背景色を元に戻す
-    })
-  })
-
   categoryClassLinks.forEach((link) => {
-    link.addEventListener('mouseover', () => {
-      link.style.color = "#f5f5f5"
-    })
-
-    link.addEventListener('mouseout', () => {
-      link.style.color = "" // 文字の色を元に戻す
-    })
-
+    if (link) {
+      link.addEventListener('mouseover', () => changeTextColor(link, "#f5f5f5"))
+      link.addEventListener('mouseout', () => changeTextColor(link, ""))
+    }
   })
 
-  category.addEventListener('mouseleave', () => {
-    pulldownLists.removeAttribute("style")
-  })
+  if (category) {
+    category.addEventListener('mouseleave', () => {
+      pulldownLists.removeAttribute("style")
+    })
+  }
 }
 
-
-window.addEventListener('turbo:load', pulldown )
+window.addEventListener('turbo:load', pulldown)
