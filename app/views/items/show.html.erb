@@ -99,7 +99,9 @@
       後ろの商品 ＞
     </a>
   </div>
-  <a href="#" class="another-item"><%= Category.find(@item.category_id).name %>をもっと見る</a>
+  <%= link_to search_items_path(q: { category_id_eq: @item.category_id }), class: "another-item" do %>
+  <%= Category.find(@item.category_id).name %>をもっと見る
+  <% end %>
 </div>
 
 <%= render "shared/footer" %>
