@@ -44,11 +44,11 @@ class ItemsController < ApplicationController
     @q = Item.ransack(params[:q])
     @items = @q.result.order('created_at DESC')
     render :search
-    #respond_to do |format|
-      #format.html { render :index } # 通常の HTML レスポンス
-      #format.js   
-      #format.json { render json: { html: render_to_string(partial: 'items_list', locals: { items: @items }) } }
-    #end
+    # respond_to do |format|
+    #  format.html { render :index } # 通常の HTML レスポンス
+    #  format.js
+    #  format.json { render json: { html: render_to_string(partial: 'items_list', locals: { items: @items }) } }
+    # end
   end
 
   private
