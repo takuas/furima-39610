@@ -25,8 +25,6 @@ function underline(){
       under.addEventListener('mouseout', () => {
         under.style.textDecoration = ""
       })
-    } else {
-      return
     }
   })
 
@@ -49,8 +47,6 @@ function underline(){
       logout.addEventListener('mouseout', () => {
         logout.style.textDecoration = ""
       })
-    } else {
-      return
     }
   })  
 
@@ -63,10 +59,7 @@ function underline(){
       login.addEventListener('mouseout', () => {
       login.style.textDecoration = ""
       })
-    } else {
-      return
     }
   })  
-
 }
 window.addEventListener('turbo:load', underline )
