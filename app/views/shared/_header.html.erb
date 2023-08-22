@@ -11,8 +11,26 @@
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
-      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+      <li id='category-link-mouseleave'>
+        <p class='category-list' id='category-list'>カテゴリー</p>
+        <%#= link_to 'カテゴリー', "#", class: "category-list", id: 'category-list' %>
+        <ul class="category-list-lists-hidden" id="category-pull-down">
+            <li id='category-link1'><%= link_to 'メンズ',                search_items_path(q: { category_id_eq: 2 }), class: "category-link1" %></li>
+            <li id='category-link2'><%= link_to 'レディース',             search_items_path(q: { category_id_eq: 3 }), class: "category-link2" %></li>
+            <li id='category-link3'><%= link_to 'ベビー・キッズ',          search_items_path(q: { category_id_eq: 4 }), class: "category-link3" %></li>
+            <li id='category-link4'><%= link_to 'インテリア・住まい・小物', search_items_path(q: { category_id_eq: 5 }), class: "category-link4" %></li>
+            <li id='category-link5'><%= link_to '本・音楽・ゲーム',        search_items_path(q: { category_id_eq: 6 }), class: "category-link5" %></li>
+            <li id='category-link6'><%= link_to 'おもちゃ・ホビー・グッズ', search_items_path(q: { category_id_eq: 7 }), class: "category-link6" %></li>
+            <li id='category-link7'><%= link_to '家電・スマホ・カメラ',     search_items_path(q: { category_id_eq: 8 }), class: "category-link7" %></li>
+            <li id='category-link8'><%= link_to 'スポーツ・レジャー',      search_items_path(q: { category_id_eq: 9 }), class: "category-link8" %></li>
+            <li id='category-link9'><%= link_to 'ハンドメイド',           search_items_path(q: { category_id_eq: 10 }), class: "category-link9" %></li>
+            <li id='category-link10'><%= link_to 'その他',                search_items_path(q: { category_id_eq: 11 }), class: "category-link10" %></li>
+          </ul>
+      </li>
+      <li><%= link_to 'ブランド', "#", class: "category-list" %></li><%# 元のクラス名はbrand-list%>
+      <% if current_page?(root_path) %>
+        <li><a href="#section" class="brand-list">商品一覧</a></li>
+      <% end %>
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
