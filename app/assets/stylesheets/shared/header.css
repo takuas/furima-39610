@@ -64,6 +64,8 @@
   text-decoration: none;
   margin-right: 3vw;
   color: #333333;
+  position: relative;
+  cursor: pointer;
 }
 
 .brand-list {
@@ -100,5 +102,27 @@
 
 .sign-up {
   text-decoration: none;
+  color: #333333;
+}
+
+.category-list-lists-hidden {
+  position: absolute;
+  display: none;
+  z-index: 1000;
+  background-color: aliceblue;
+  border-radius: 5px;
+}
+
+.category-link1,
+.category-link2, 
+.category-link3, 
+.category-link4, 
+.category-link5, 
+.category-link6, 
+.category-link7, 
+.category-link8, 
+.category-link9, 
+.category-link10 {
+  margin-right: 3vw;
   color: #333333;
 }
