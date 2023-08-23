@@ -20,21 +20,26 @@ function underline(){
     if (under) {
       under.addEventListener('mouseover', () => {
         under.style.textDecoration = "underline"
+        under.style.textDecorationColor = "#3ccace"
       })
 
       under.addEventListener('mouseout', () => {
         under.style.textDecoration = ""
+        under.style.textDecorationColor = ""
       })
     }
   })
 
   if (itemUnder) {
     itemUnder.addEventListener('mouseover', () => {
-      itemUnder.style.textDecoration = "underline";
+      itemUnder.style.textDecoration = "underline"
+      itemUnder.style.textDecorationColor = "#3ccace"
     })
   
     itemUnder.addEventListener('mouseout', () => {
-      itemUnder.style.textDecoration = "";
+      itemUnder.style.textDecoration = ""
+      itemUnder.style.textDecorationColor = ""
+
     })
   }
 
@@ -42,10 +47,13 @@ function underline(){
     if (logout) {
       logout.addEventListener('mouseover', () => {
         logout.style.textDecoration = "underline"
+        logout.style.textDecorationColor = "#3ccace"
       })
   
       logout.addEventListener('mouseout', () => {
         logout.style.textDecoration = ""
+        logout.style.textDecorationColor = ""
+
       })
     }
   })  
@@ -54,10 +62,12 @@ function underline(){
     if (login) {
       login.addEventListener('mouseover', () => {
       login.style.textDecoration = "underline"
+      login.style.textDecorationColor = "#3ccace"
       })
   
       login.addEventListener('mouseout', () => {
       login.style.textDecoration = ""
+      login.style.textDecorationColor = ""
       })
     }
   })  
