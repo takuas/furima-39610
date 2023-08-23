@@ -73,6 +73,11 @@
   color: #333333;
 }
 
+.scroll-item-list {
+  text-decoration: none;
+  color: #333333;
+}
+
 .lists-right {
   display: flex;
   list-style: none;
