@@ -24,7 +24,7 @@ class Item < ApplicationRecord
   end
 
   def self.ransackable_attributes(_auth_object = nil)
-    ['category_id']
+    ['category_id','item_name']
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
