@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_q, only: [:index, :show, :search]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
-    @q = Item.ransack(params[:q])
   end
 
   def new
@@ -41,7 +41,6 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @q = Item.ransack(params[:q])
     @items = @q.result.order('created_at DESC')
     render :search
     # respond_to do |format|
@@ -71,5 +70,13 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.includes(:user).find(params[:id])
+  end
+
+  def set_q
+    if params[:q]&.dig(:item_name)
+      squished_keywords = params[:q][:item_name].squish
+      params[:q][:item_name_cont_any] = squished_keywords.split(" ")
+    end
+    @q = Item.ransack(params[:q])
   end
 end
