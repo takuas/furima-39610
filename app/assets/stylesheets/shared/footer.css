@@ -66,3 +66,9 @@
 .footer>p {
   font-size: 14px;
 }
+
+.disabled {
+  pointer-events: none; /* リンクをクリック不可にする */
+  opacity: 0.5; /* リンクの透明度を下げて無効化を表現 */
+  cursor: not-allowed; /* カーソルを「禁止」にする */
+}
