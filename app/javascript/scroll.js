@@ -1,5 +1,7 @@
 function scroll (){
   const scrollLink = document.querySelector('.scroll-item-list')
+  const scrollTop = document.getElementById('top-scroll')
+
   if (scrollLink) {
     scrollLink.addEventListener('click', (e) => {
       e.preventDefault(); // リンクのデフォルト動作を無効化
@@ -13,6 +15,16 @@ function scroll (){
           top: targetElement.offsetTop,
         })
       }
+    })
+  }
+
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault()
+      window.scrollTo({
+        behavior: "smooth",
+        top: 0,
+      })
     })
   }
 }
