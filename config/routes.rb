@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    resources :comments, only: :create
     resources :orders, only: [:index, :create]
   end
 end
