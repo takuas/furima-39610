@@ -144,7 +144,6 @@
 .comment-box {
   width: 40vw;
   background-color: #fff;
-  margin: 5vh 0;
   text-align: center;
 }
 
@@ -189,7 +188,7 @@
   display: flex;
   justify-content: space-between;
   width: 50vw;
-
+  margin-top: 5vh;
 }
 
 .change-item-btn {
@@ -209,7 +208,7 @@
 
 .answer-box {
   width: auto;
-  margin-top: 5vh;
+  margin: 5vh 0;
   background-color: white;
   border-radius: 0 0 10px 10px;
 }

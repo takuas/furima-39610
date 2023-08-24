@@ -88,20 +88,22 @@
       <% end %>
     </div>
   <% end %>
-  <div class="comment-box">
-    <%= form_with(model: [@item, @comment], local: true) do |f| %>
-      <%= f.text_area :text, placeholder: "コメントを入力", class: "comment-text" %>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする</span>
-      </button>
-    <% end %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="comment-box" <% unless @comments.any? %>style="margin-top: 5vh;"<% end %>>
+      <%= form_with(model: [@item, @comment], local: true) do |f| %>
+        <%= f.text_area :text, placeholder: "コメントを入力", class: "comment-text" %>
+        <p class="comment-warn">
+          相手のことを考え丁寧なコメントを心がけましょう。
+          <br>
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        </p>
+        <button type="submit" class="comment-btn">
+          <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+          <span>コメントする</span>
+        </button>
+      <% end %>
+    </div>
+  <% end %>
   <div class="links">
       <%= link_to '＜ 前の商品', item_path(@item.id + 1), class: "change-item-btn #{'disabled' unless Item.exists?(@item.id + 1)}" %>
       <%= link_to '後ろの商品 ＞', item_path(@item.id - 1), class: "change-item-btn #{'disabled' if @item.id <= 1}" %>
