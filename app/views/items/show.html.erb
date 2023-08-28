@@ -75,30 +75,30 @@
     </div>
   </div>
   <%# /商品の概要 %>
-
-  <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
-  </div>
+  <%= render "comments_list", locals: { comments: @comments } %>
+  <% if user_signed_in? %>
+    <div class="comment-box" <% unless @comments.any? %>style="margin-top: 5vh;"<% end %>>
+      <%= form_with(model: [@item, @comment], local: true) do |f| %>
+        <%= f.text_area :text, placeholder: "コメントを入力", class: "comment-text" %>
+        <p class="comment-warn">
+          相手のことを考え丁寧なコメントを心がけましょう。
+          <br>
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        </p>
+        <button type="submit" class="comment-btn" id="comment-btn">
+          <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+          <span>コメントする</span>
+        </button>
+      <% end %>
+    </div>
+  <% end %>
   <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
+      <%= link_to '＜ 前の商品', item_path(@item.id + 1), class: "change-item-btn #{'disabled' unless Item.exists?(@item.id + 1)}" %>
+      <%= link_to '後ろの商品 ＞', item_path(@item.id - 1), class: "change-item-btn #{'disabled' if @item.id <= 1}" %>
   </div>
-  <a href="#" class="another-item"><%= Category.find(@item.category_id).name %>をもっと見る</a>
+  <%= link_to search_items_path(q: { category_id_eq: @item.category_id }), class: "another-item" do %>
+  <%= Category.find(@item.category_id).name %>をもっと見る
+  <% end %>
 </div>
 
 <%= render "shared/footer" %>

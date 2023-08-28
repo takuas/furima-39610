@@ -20,3 +20,9 @@
 .purchase-btn-icon {
   width: 60%;
 }
+
+.top-scroll {
+  position: fixed;
+  bottom: 155px;
+  right: 33px;
+}

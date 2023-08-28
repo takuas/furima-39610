@@ -144,7 +144,6 @@
 .comment-box {
   width: 40vw;
   background-color: #fff;
-  margin: 5vh 0;
   text-align: center;
 }
 
@@ -173,6 +172,7 @@
   font-size: 18px;
   border-radius: 100px;
   margin-bottom: 2vh;
+  cursor: pointer;
 }
 
 .comment-flag {
@@ -188,7 +188,7 @@
   display: flex;
   justify-content: space-between;
   width: 50vw;
-
+  margin-top: 5vh;
 }
 
 .change-item-btn {
@@ -204,4 +204,31 @@
   text-decoration: none;
   font-weight: bold;
   font-size: 23px;
+}
+
+.answer-box {
+  width: auto;
+  margin: 5vh 0;
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+}
+
+.answer-list {
+  text-align: center;
+  background-color: #3ccace;
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.answer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.answer-left {
+  text-align: left;
+}
+
+.answer-text {
+  width: 47vw;
 }

@@ -1,0 +1,11 @@
+<% if @comments.any? %>
+  <div class="answer-box">
+    <h4 class="answer-list">＜コメント一覧＞</h4>
+    <% @comments.each do |comment| %>
+      <p class="answer">
+        <strong class="answer-left"><%= comment.user.nickname %>：</strong>
+        <span class="answer-text"><%= comment.text %></span>
+      </p>
+    <% end %>
+  </div>
+<% end %>

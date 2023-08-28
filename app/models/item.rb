@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
-  has_one :order
-  belongs_to :user
+  has_many         :comments, dependent: :destroy
+  has_one          :order, dependent: :destroy
+  belongs_to       :user
   has_one_attached :image
 
   with_options presence: true do
@@ -21,6 +22,10 @@ class Item < ApplicationRecord
 
   def sold?
     order.present?
+  end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    ['category_id','item_name']
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions

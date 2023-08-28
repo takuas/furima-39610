@@ -1,26 +1,44 @@
 <%# CSS・・・assets/stylesheets/shared/header.css %>
-<header class='top-page-header'>
+<header class='top-page-header' id='top-page-header'>
   <div class='search-bar-contents'>
     <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
-    <form class="search-form" action="#">
-      <input class='input-box' placeholder='キーワードから探す'>
-      <button class="search-button">
+    <%= search_form_for @q, url: search_items_path, remote: true, class:'search-form' do |f| %>
+      <%= f.text_field :item_name, placeholder: 'キーワードから探す', class: 'input-box', value: params[:q]&.dig(:item_name) %>
+      <button class="search-button" id='search-btton'>
         <%= image_tag "search.png", class:"search-icon" %>
       </button>
-    </form>
+    <% end %>
   </div>
   <div class='nav'>
     <ul class='lists-left'>
-      <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
-      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+      <li id='category-link-mouseleave'>
+        <p class='category-list' id='category-list'>カテゴリー</p>
+        <%#= link_to 'カテゴリー', "#", class: "category-list", id: 'category-list' %>
+        <ul class="category-list-lists-hidden" id="category-pull-down">
+            <li id='category-link1'><%= link_to 'メンズ',                search_items_path(q: { category_id_eq: 2 }), class: "category-link1" %></li>
+            <li id='category-link2'><%= link_to 'レディース',             search_items_path(q: { category_id_eq: 3 }), class: "category-link2" %></li>
+            <li id='category-link3'><%= link_to 'ベビー・キッズ',          search_items_path(q: { category_id_eq: 4 }), class: "category-link3" %></li>
+            <li id='category-link4'><%= link_to 'インテリア・住まい・小物', search_items_path(q: { category_id_eq: 5 }), class: "category-link4" %></li>
+            <li id='category-link5'><%= link_to '本・音楽・ゲーム',        search_items_path(q: { category_id_eq: 6 }), class: "category-link5" %></li>
+            <li id='category-link6'><%= link_to 'おもちゃ・ホビー・グッズ', search_items_path(q: { category_id_eq: 7 }), class: "category-link6" %></li>
+            <li id='category-link7'><%= link_to '家電・スマホ・カメラ',     search_items_path(q: { category_id_eq: 8 }), class: "category-link7" %></li>
+            <li id='category-link8'><%= link_to 'スポーツ・レジャー',      search_items_path(q: { category_id_eq: 9 }), class: "category-link8" %></li>
+            <li id='category-link9'><%= link_to 'ハンドメイド',           search_items_path(q: { category_id_eq: 10 }), class: "category-link9" %></li>
+            <li id='category-link10'><%= link_to 'その他',                search_items_path(q: { category_id_eq: 11 }), class: "category-link10" %></li>
+          </ul>
+      </li>
+      <li><%= link_to 'ブランド', "#", class: "category-list", id: "brand-list" %></li><%# 元のクラス名はbrand-list%>
+      <% if current_page?(root_path) %>
+        <li><a href="#section" class="scroll-item-list" id="item-under">商品一覧</a></li>
+      <% end %>
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
-      <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
-      <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout" %></li>
+      <li><%= link_to current_user.nickname, "#", class: "user-nickname", id: "user-nickname" %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout", id: "logout" %></li>
       <% else %>
-      <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-      <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      <li><%= link_to 'ログイン', new_user_session_path, class: "login", id: "login" %></li>
+      <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up", id: "sign-up" %></li>
       <% end %>
     </ul>
   </div>
