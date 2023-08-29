@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+  has_many         :favorites
   has_many         :comments, dependent: :destroy
   has_one          :order, dependent: :destroy
   belongs_to       :user
@@ -26,6 +27,10 @@ class Item < ApplicationRecord
 
   def self.ransackable_attributes(_auth_object = nil)
     ['category_id','item_name']
+  end
+
+  def favorite_by?(user)
+    favorites.where(user_id: user.id).exists?
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
