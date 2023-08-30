@@ -76,11 +76,13 @@
     </div>
   </div>
   <%# /商品の概要 %>
+  <div id="comments-list-box">
   <%= render "comments_list", locals: { comments: @comments } %>
+  </div>
   <% if user_signed_in? %>
     <div class="comment-box" <% unless @comments.any? %>style="margin-top: 5vh;"<% end %>>
-      <%= form_with(model: [@item, @comment], local: true) do |f| %>
-        <%= f.text_area :text, placeholder: "コメントを入力", class: "comment-text" %>
+      <%= form_with(model: [@item, @comment], id: "comment-form", data: @item.id ) do |f| %>
+        <%= f.text_area :text, placeholder: "コメントを入力", class: "comment-text", id: "comment-text" %>
         <p class="comment-warn">
           相手のことを考え丁寧なコメントを心がけましょう。
           <br>
