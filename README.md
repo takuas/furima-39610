@@ -18,6 +18,7 @@
 - has_many   :items
 - has_many   :orders
 - has_many   :comments
+- has_many   :favorites
 
 ## items テーブル
 
@@ -37,6 +38,7 @@
 
 - has_many   :comments
 - has_one    :order
+- has_many   :favorites
 - belongs_to :user
 
 ## orders テーブル
@@ -73,6 +75,18 @@
 | column             | type       | options                        |
 | ------------------ | ---------- | ------------------------------ |
 | text               | text       | null: false                    |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+
+## favoritesテーブル
+
+| column             | type       | options                        |
+| ------------------ | ---------- | ------------------------------ |
 | user               | references | null: false, foreign_key: true |
 | item               | references | null: false, foreign_key: true |
 

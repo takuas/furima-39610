@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "favorite" do %>
+  <%= render partial: "favorites/favorite", locals: { item: @item } %>
+<% end %>

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :orders
   has_many :comments
+  has_many :favorites
 
   VALID_PASSWORD_REGEX  = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/
   VALID_NAME_REGEX      = /\A[ぁ-んァ-ヶ一-龥々ー]+\z/

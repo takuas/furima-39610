@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
+    @favorite_count = Favorite.where(item: @item).count
   end
 
   def edit
@@ -77,7 +78,7 @@ class ItemsController < ApplicationController
   def set_q
     if params[:q]&.dig(:item_name)
       squished_keywords = params[:q][:item_name].squish
-      params[:q][:item_name_cont_any] = squished_keywords.split(" ")
+      params[:q][:item_name_cont_any] = squished_keywords.split(' ')
     end
     @q = Item.ransack(params[:q])
   end

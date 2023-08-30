@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+  <% if current_user == @item.user %>
+    <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+    <%= @favorite_count %>
+    <span class="favorite-link">お気に入り</span>
+    <!-- 自分の商品の場合、お気に入り機能は無効化 -->
+  <% elsif @item.favorite_by?(current_user) %>
+    <%= image_tag "star2.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+    <%= @favorite_count %>
+    <%= link_to "お気に入り済", item_favorites_path(@item), data: { turbo_method: :delete }, class: "favorite-link" %>
+  <% else %>
+    <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+    <%= @favorite_count %>
+    <%= link_to "お気に入り", item_favorites_path(@item), data: { turbo_method: :post }, class: "favorite-link" %>
+  <% end %>
+<% else %>
+  <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+  <%= @favorite_count %>
+  <span class="favorite-link">お気に入り</span>
+<% end %>
