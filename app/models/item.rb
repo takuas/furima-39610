@@ -26,7 +26,7 @@ class Item < ApplicationRecord
   end
 
   def self.ransackable_attributes(_auth_object = nil)
-    ['category_id','item_name']
+    ['category_id', 'item_name']
   end
 
   def favorite_by?(user)
