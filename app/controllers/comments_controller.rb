@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
   def create
     @item = Item.find(params[:item_id])
-    if Comment.create(comment_params)
-      redirect_to item_path(@item)
+    @comment = Comment.new(comment_params)
+  
+    if @comment.save
+      render json: { comment: @comment, user: @comment.user } # コメントをJSON形式で返す
     else
       render :show, status: :unprocessable_entity
     end
