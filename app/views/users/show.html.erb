@@ -1,0 +1,38 @@
+<%= render "shared/header" %>
+
+<div class="item-show">
+  <div class='item-box'>
+    <h1 class="profile-title">ユーザープロフィール</h1>
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">ユーザー名</th>
+          <td class="detail-value"><%= @user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">生年月日</th>
+          <td class="detail-value"><%= @user.date_of_birth.strftime('%Y年%m月%d日') %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">名前</th>
+          <td class="detail-value"><%= @user.last_name %>　<%= @user.first_name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">振り仮名</th>
+          <td class="detail-value"><%= @user.kana_last_name %>　<%= @user.kana_first_name %></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1 class="profile-title">出品リスト</h1>
+    <ul class='item-lists' id='items-list'>
+     <%= myitem_lists(@items) %>
+    </ul>
+    <h1 class="profile-title">購入履歴</h1>
+    <ul class='item-lists' id='items-list'>
+     <%= myitem_lists(@order_items) %>
+    </ul>
+  </div>
+</div>
+
+
+<%= render "shared/footer" %>
