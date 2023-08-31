@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @items = @user.items
-    @favorite_items = @user.favorite_items
+    @items = @user.items.order(created_at: :desc)
+    @favorite_items = @user.favorite_items.order(created_at: :desc)
   end
 
   private
