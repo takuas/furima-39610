@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @items = @user.items
-    @order_items = @user.order_items
+    @favorite_items = @user.favorite_items
   end
 
   private
