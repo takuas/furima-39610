@@ -18,7 +18,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def account_update_params
-    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :current_password, :last_name, :first_name, :kana_last_name, :kana_first_name, :date_of_birth)
+    params.require(:user).permit(
+      :nickname,
+      :email,
+      :password,
+      :password_confirmation,
+      :current_password,
+      :last_name,
+      :first_name,
+      :kana_last_name,
+      :kana_first_name,
+      :date_of_birth
+    )
   end
 
   # GET /resource/sign_up
@@ -55,7 +66,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def after_update_path_for(resource)
+    user_path(resource)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
