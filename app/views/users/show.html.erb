@@ -2,7 +2,14 @@
 
 <div class="item-show">
   <div class='item-box'>
-    <h1 class="profile-title">ユーザープロフィール</h1>
+    <h1 class="profile-title">
+      ユーザープロフィール
+      <% if user_signed_in? && current_user.id == @user.id %>
+        <span class="profile-edit">
+          <%= link_to 'プロフィールを編集', edit_user_registration_path, class: "profile-edit-btn" %>
+        </span>
+      <% end %>
+    </h1>
     <table class="detail-table">
       <tbody>
         <tr>
@@ -23,7 +30,7 @@
         </tr>
       </tbody>
     </table>
-    <h1 class="profile-title">出品リスト</h1>
+    <h1 class="profile-item-title">出品リスト</h1>
     <ul class='item-lists' id='items-list'>
      <%= myitem_lists(@items) %>
     </ul>
