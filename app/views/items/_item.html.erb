@@ -15,8 +15,12 @@
     <div class='item-price'>
       <span> <%= item.price %>円 <br><%=  DeliveryCharge.find(item.delivery_charge_id).name %></span>
       <div class='star-btn'>
-        <%= image_tag "star.png", class:"star-icon" %>
-        <span class='star-count'>0</span>
+        <% if user_signed_in? && current_user.favorite_items.exists?(item.id) %>
+          <%= image_tag "small_star.png", class:"star-icon" %>
+        <% else %>
+          <%= image_tag "star.png", class:"star-icon" %>
+        <% end %>
+        <span class='star-count'><%= item.favorites.count %></span>
       </div>
     </div>
   </div>

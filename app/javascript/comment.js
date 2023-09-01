@@ -1,19 +1,19 @@
-function buildComment(nickName, text) {
+function buildComment(nickName, text, userId) {
   return `
     <p class="answer">
-      <strong class="answer-left">${nickName}：</strong>
+    <a href="${'/users/' + userId}" class="answer-left">${nickName}：</a>
       <span class="answer-text">${text}</span>
     </p>
   `;
 }
 
-function buildCommentBox(nickName, text) {
+function buildCommentBox(nickName, text, userId) {
   return `
     <div class="answer-box" id="answer">
       <h4 class="answer-list">＜コメント一覧＞</h4>
       <p class="answer">
-        <strong class="answer-left">${nickName}：</strong>
-        <span class="answer-text">${text}</span>
+      <a href="${'/users/' + userId}" class="answer-left">${nickName}：</a>
+      <span class="answer-text">${text}</span>
       </p>
     </div>
   `;
@@ -38,12 +38,13 @@ function comment(){
       }
       const nickName = XHR.response.user.nickname
       const text = XHR.response.comment.text
+      const userId = XHR.response.user.id;
       const answerList = document.getElementById("answer")
       const answerListBox = document.getElementById("comments-list-box")
       if (answerList) {
-        answerList.insertAdjacentHTML("beforeend", buildComment(nickName, text))
+        answerList.insertAdjacentHTML("beforeend", buildComment(nickName, text, userId))
       } else if (answerListBox) {
-        answerListBox.insertAdjacentHTML("beforeend", buildCommentBox(nickName, text))
+        answerListBox.insertAdjacentHTML("beforeend", buildCommentBox(nickName, text, userId))
       }
       const formText = document.getElementById("comment-text")
       formText.value = ""
