@@ -4,8 +4,8 @@ class ItemsController < ApplicationController
   before_action :set_q, only: [:index, :show, :search]
 
   def index
-    @items = Item.includes(:user).order('created_at DESC')
-    @not_purchased_items = Item.includes(:order).where(orders: { id: nil })
+    @items = Item.includes(:user).order('items.created_at DESC')
+    @not_purchased_items = Item.includes(:order).order('items.created_at DESC').where(orders: { id: nil })
   end
 
   def new
