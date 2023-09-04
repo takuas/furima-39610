@@ -31,18 +31,29 @@
       </tbody>
     </table>
     <h1 class="profile-item-title">出品リスト</h1>
-    <ul class='item-lists' id='items-list'>
-     <%= myitem_lists(@items) %>
-    </ul>
+    <% if @items.any? %>
+      <ul class='item-lists' id='items-list'>
+       <%= myitem_lists(@items) %>
+      </ul>
+    <% else %>
+      出品した商品はありません
+    <% end %>
     <h1 class="favorite-title">お気に入り</h1>
-    <ul class='item-lists' id='items-list'>
-     <%= myitem_lists(@favorite_items) %>
-    </ul>
+    <% if @favorite_items.any? %>
+      <ul class='item-lists' id='items-list'>
+       <%= myitem_lists(@favorite_items) %>
+      </ul>
+    <% else %>
+     お気に入りの商品はありません
+    <% end %>
     <h1 class="favorite-title">購入履歴</h1>
-    <ul class='item-lists' id='items-list'>
-     <%= myitem_lists(@order_items) %>
-    </ul>
-
+    <% if @order_items.any? %>
+      <ul class='item-lists' id='items-list'>
+        <%= myitem_lists(@order_items) %>
+      </ul>
+    <% else %>
+      購入した商品はありません
+    <% end %>
   </div>
 </div>
 
