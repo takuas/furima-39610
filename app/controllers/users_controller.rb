@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @items = @user.items.order(created_at: :desc)
     @favorite_items = @user.favorite_items.order(created_at: :desc)
+    @order_items = @user.order_items.order(created_at: :desc)
   end
 
   private

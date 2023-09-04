@@ -2,10 +2,29 @@
   font-weight: 600;
   font-size: 30px;
   margin-bottom: 30px;
+  margin-left: 10vw;
+  display: flex;
+  align-items: center;
 }
 
 .favorite-title {
   font-weight: 600;
   font-size: 30px;
   margin: 30px 30px;
+}
+
+.profile-item-title {
+  font-weight: 600;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+.profile-edit {
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.profile-edit-btn {
+  font-weight:100;
+  color: dodgerblue;
 }
