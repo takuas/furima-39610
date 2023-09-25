@@ -1,4 +1,6 @@
 function transition() {
+
+  if (window.location.pathname !== '/') return;
   const elements = {
     firstTitle: document.getElementById('select-reason-title'),
     firstList1: document.getElementById('reason-list1'),
@@ -10,7 +12,8 @@ function transition() {
     secondList3: document.getElementById('feature-list3')
   };
 
-  if (elements) {
+  
+  if (elements !== null) {
     window.addEventListener('scroll', () => {
       const scrollPosition = window.scrollY;
       const thresholds = getThresholds(); // しきい値の取得
@@ -18,7 +21,7 @@ function transition() {
       // スクロール位置がしきい値を超えた場合の処理
       for (const elementName in elements) {
         if (scrollPosition > thresholds[elementName]) {
-          elements[elementName].style.opacity = '1'
+          elements[elementName].style.opacity = '1';
           elements[elementName].style.transform = 'translateX(0)';
         }
       }
