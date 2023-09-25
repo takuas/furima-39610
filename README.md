@@ -95,7 +95,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## furimaアプリのGitHubのURL
+## フリマアプリのGitHubのURL
 
 URL https://github.com/evetakumatsu/furima-39610
 
@@ -103,18 +103,18 @@ URL https://github.com/evetakumatsu/furima-39610
 URL https://furima-39610.onrender.com/
 
 ## Basic認証のIDとパスワード
-ID        matsumoto
+ID        matsumoto  
 パスワード 39610
 
 ## 出品者用のメールアドレスとパスワード
-メールアドレス matu@gmail.com
+メールアドレス matu@gmail.com  
 パスワード    111aaa
 
 ## 購入者用のメールアドレスとパスワード
-メールアドレス kiteretu@gmail.com
+メールアドレス kiteretu@gmail.com  
 パスワード    222aaa
 
-# furimaアプリの追加実装
+# フリマアプリの追加実装
 
 ## header部分
 
